@@ -1,485 +1,1219 @@
+<!DOCTYPE html>
+<html lang="id">
 
-<!doctype html>
-<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title># teleskop - News & Social Media Analytics Platform</title>
+    <meta name="description" content="Comprehensive social media analytics platform for brand monitoring, sentiment analysis, and market research.">
 
-<head>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!--====== Required meta tags ======-->
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!--====== Title ======-->
-    <title>Teleskop - Data Analytic Service</title>
-
-    <!--====== Favicon Icon ======-->
+    <!-- Favicon -->
     <link rel="shortcut icon" href="/public/logo.png" type="image/png">
 
-    <!--====== Bootstrap css ======-->
-    <link rel="stylesheet" href="/public/bootstrap.min.css">
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <!--====== Line Icons css ======-->
-    <link rel="stylesheet" href="/public/LineIcons.css">
+    :root {
+      --primary-main: #00A76F;
+      --primary-dark: #007867;
+      --primary-light: #5BE49B;
+      --primary-lighter: #E8F5F0;
+      --secondary-main: #8E33FF;
+      --grey-0: #FFFFFF;
+      --grey-100: #F9FAFB;
+      --grey-200: #F4F6F8;
+      --grey-300: #DFE3E8;
+      --grey-500: #919EAB;
+      --grey-600: #637381;
+      --grey-700: #454F5B;
+      --grey-800: #212B36;
+      --grey-900: #161C24;
+      --font-family: 'Inter', sans-serif;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-    <!--====== Magnific Popup css ======-->
-    <link rel="stylesheet" href="/public/magnific-popup.css">
+    html {
+      scroll-behavior: smooth;
+    }
 
-    <!--====== Default css ======-->
-    <link rel="stylesheet" href="/public/default.css">
+    body {
+      font-family: var(--font-family);
+      background: var(--grey-0);
+      color: var(--grey-800);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-    <!--====== Style css ======-->
-    <link rel="stylesheet" href="/public/style.css">
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+    }
 
+    .navbar.scrolled {
+      box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
+    }
 
-</head>
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-<body>
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-main);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-    <!--====== HEADER PART START ======-->
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
 
-    <header class="header-area">
-        <div class="navgition navgition-transparent">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <nav class="navbar navbar-expand-lg">
-                            <a class="navbar-brand" href="#">
-                                <img src="/public/logo.png" style="width: 70px;" alt="Logo">
-                            </a>
+    .nav-links a:not(.btn) {
+      text-decoration: none;
+      color: var(--grey-700);
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
 
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarOne" aria-controls="navbarOne" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                            </button>
+    .nav-links a:hover {
+      color: var(--primary-main);
+    }
 
-                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarOne">
-                                <ul class="navbar-nav m-auto">
-                                    <li class="nav-item active">
-                                        <a class="page-scroll" href="#home">HOME</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="page-scroll" href="#service">SERVICES</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="page-scroll" href="#pricing">PRICING</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="page-scroll" href="#contact">CONTACT</a>
-                                    </li>
-                                </ul>
-                            </div>
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-main);
+      transition: var(--transition);
+    }
 
-                            <div class="navbar-social d-none d-sm-flex align-items-center">
-                                <span>FOLLOW US</span>
-                                <ul>
-                                    <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
-                                    <li><a href="#"><i class="lni-twitter-original"></i></a></li>
-                                    <li><a href="#"><i class="lni-instagram-original"></i></a></li>
-                                    <li><a href="#"><i class="lni-linkedin-original"></i></a></li>                                  
-                                </ul>
-                            </div>
-                        </nav> <!-- navbar -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- navgition -->
+    .nav-links a:hover::after {
+      width: 100%;
+    }
 
-        <div id="home" class="header-hero bg_cover" style="background-image: url(/public/header-bg.jpg)">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-8 col-lg-10">
-                        <div class="header-content text-center">
-                            <h3 class="header-title">teleskop.id - Precision Media Monitoring with Data Analytics</h3>
-                            <p class="text">Elevate your media strategy with our streamlined Data Analytics service. Ready, customizable, and impactful for your imminent launch!</p>
-                            <ul class="header-btn">
-                                <li><a class="main-btn btn-one" href="#">GET IN TOUCH</a></li>
-                                <li><a class="main-btn btn-two video-popup" href="https://www.youtube.com/watch?v=r44RKWyfcFw">WATCH THE VIDEO <i class="lni-play"></i></a></li>
-                            </ul>
-                        </div> <!-- header content -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-            <div class="header-shape">
-                <img src="/public/header-shape.svg" alt="shape">
+    .lang-switcher {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      background: var(--grey-100);
+      border-radius: 8px;
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      padding: 0.25rem 0.75rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--grey-600);
+      transition: var(--transition);
+      font-family: var(--font-family);
+    }
+
+    .lang-btn.active {
+      background: var(--primary-main);
+      color: white;
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: var(--grey-200);
+      color: var(--grey-800);
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-family);
+    }
+
+    .btn-primary {
+      background: var(--primary-main);
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 167, 111, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 167, 111, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary-main);
+      border: 2px solid var(--primary-main);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-main);
+      color: white;
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--grey-800);
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 8rem 2rem 4rem;
+      background: linear-gradient(135deg, var(--primary-lighter) 0%, var(--grey-100) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 80%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0, 167, 111, 0.1) 0%, transparent 70%);
+      animation: float 20s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(30px, -30px) rotate(5deg); }
+      66% { transform: translate(-20px, 20px) rotate(-5deg); }
+    }
+
+    .hero-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--grey-900);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .hero-content .highlight {
+      color: var(--primary-main);
+    }
+
+    .hero-content p {
+      font-size: 1.25rem;
+      color: var(--grey-600);
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      filter: drop-shadow(0 20px 40px rgba(0, 167, 111, 0.2));
+      animation: floatImage 6s infinite ease-in-out;
+    }
+
+    @keyframes floatImage {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Stats Section */
+    .stats {
+      background: white;
+      padding: 3rem 2rem;
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05);
+      margin-top: -2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stats-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-item p {
+      color: var(--grey-600);
+      font-weight: 500;
+    }
+
+    /* Trusted By Section */
+    .trusted-by {
+      padding: 4rem 2rem;
+      background: var(--grey-900);
+      text-align: center;
+    }
+
+    .trusted-by-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .trusted-by h2 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--grey-0);
+      margin-bottom: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .trusted-logos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .trusted-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 80px;
+      opacity: 0.6;
+      transition: var(--transition);
+      filter: grayscale(100%) brightness(0) invert(1);
+    }
+
+    .trusted-logo:hover {
+      opacity: 1;
+      filter: grayscale(0%) brightness(1) invert(1);
+    }
+
+    .trusted-logo img {
+      max-height: 60px;
+      max-width: 180px;
+      object-fit: contain;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 6rem 2rem;
+      background: var(--grey-100);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 4rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--grey-900);
+      margin-bottom: 1rem;
+    }
+
+    .section-header p {
+      font-size: 1.1rem;
+      color: var(--grey-600);
+    }
+
+    .features-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      transition: var(--transition);
+      border: 1px solid var(--grey-200);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-main), var(--primary-light));
+      transform: scaleX(0);
+      transition: var(--transition);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 167, 111, 0.15);
+      border-color: var(--primary-light);
+    }
+
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .feature-icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, var(--primary-main), var(--primary-light));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: white;
+      font-size: 1.75rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--grey-900);
+      margin-bottom: 1rem;
+    }
+
+    .feature-card p {
+      color: var(--grey-600);
+      line-height: 1.8;
+    }
+
+    /* Pricing Section */
+    .pricing {
+      padding: 6rem 2rem;
+      background: white;
+    }
+
+    .pricing-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .pricing-card {
+      background: var(--grey-100);
+      padding: 3rem;
+      border-radius: 24px;
+      border: 2px solid var(--grey-300);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      background: linear-gradient(135deg, var(--primary-main), var(--primary-dark));
+      color: white;
+      transform: scale(1.05);
+      border: none;
+      box-shadow: 0 20px 60px rgba(0, 167, 111, 0.3);
+    }
+
+    .pricing-card.featured,
+    .pricing-card.featured h3,
+    .pricing-card.featured .pricing-price,
+    .pricing-card.featured .pricing-features,
+    .pricing-card.featured .pricing-features i,
+    .pricing-card.featured .pricing-badge { color: white; }
+
+    .pricing-badge {
+      position: absolute;
+      top: -15px;
+      right: 20px;
+      background: var(--secondary-main);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .pricing-card.featured:hover {
+      transform: translateY(-8px) scale(1.07);
+    }
+
+    .pricing-header h3 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-price {
+      font-size: 3rem;
+      font-weight: 800;
+      margin: 1.5rem 0;
+    }
+
+    .pricing-price span {
+      font-size: 1.25rem;
+      font-weight: 400;
+      opacity: 0.8;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin: 2rem 0;
+    }
+
+    .pricing-features li {
+      padding: 0.75rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .pricing-features i {
+      color: var(--primary-main);
+      font-size: 1.25rem;
+    }
+
+    .pricing-card.featured .pricing-features i {
+      color: var(--primary-lighter);
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary-main));
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: moveBackground 20s linear infinite;
+    }
+
+    @keyframes moveBackground {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .cta-container {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta p {
+      font-size: 1.25rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.95;
+    }
+
+    .btn-white {
+      background: white;
+      color: var(--primary-main);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-white:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--grey-900);
+      color: var(--grey-300);
+      padding: 3rem 2rem 1.5rem;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h4 {
+      color: white;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section a {
+      color: var(--grey-400);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-section a:hover {
+      color: var(--primary-light);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--grey-700);
+      color: var(--grey-500);
+    }
+
+    /* Language toggle */
+    .lang-hidden {
+      display: none !important;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 968px) {
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 280px;
+        height: calc(100vh - 70px);
+        background: white;
+        flex-direction: column;
+        padding: 2rem;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+        align-items: flex-start;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .mobile-toggle {
+        display: block;
+      }
+
+      .hero {
+        padding: 6rem 1.5rem 3rem;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-content p {
+        font-size: 1.1rem;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+      }
+
+      .features-grid,
+      .pricing-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-card.featured {
+        transform: scale(1);
+      }
+
+      .pricing-card.featured:hover {
+        transform: translateY(-8px) scale(1.02);
+      }
+
+      .stats-container {
+        gap: 2rem;
+      }
+
+      .trusted-logos {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 2rem;
+      }
+
+      .cta h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-container {
+        padding: 1rem;
+      }
+
+      .logo {
+        font-size: 1.25rem;
+      }
+
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
+
+      .btn {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.9rem;
+      }
+
+      .stat-item h3 {
+        font-size: 2rem;
+      }
+
+      .feature-card,
+      .pricing-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .section-header h2 {
+        font-size: 1.75rem;
+      }
+
+      .cta h2 {
+        font-size: 1.75rem;
+      }
+
+      .cta p {
+        font-size: 1rem;
+      }
+    }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#" class="logo">
+          <i class="fas fa-telescope"></i>
+          # teleskop
+        </a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#features" class="lang-en lang-hidden">Features</a><a href="#features" class="lang-id">Fitur</a></li>
+          <li><a href="#pricing" class="lang-en lang-hidden">Pricing</a><a href="#pricing" class="lang-id">Harga</a></li>
+          <li><a href="#about" class="lang-en lang-hidden">About</a><a href="#about" class="lang-id">Tentang</a></li>
+          <li><a href="#contact" class="lang-en lang-hidden">Contact</a><a href="#contact" class="lang-id">Kontak</a></li>
+          <li>
+            <div class="lang-switcher">
+              <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">EN</button>
+              <button class="lang-btn active" data-lang="id" onclick="switchLanguage('id')">ID</button>
             </div>
-        </div> <!-- header content -->
-    </header>
+          </li>
+          <li>
+            <a href="https://alpha.teleskop.id" class="btn btn-primary lang-en lang-hidden">Get Started Free</a>
+            <a href="https://alpha.teleskop.id" class="btn btn-primary lang-id">Mulai Gratis</a>
+          </li>
+        </ul>
+        <button class="mobile-toggle" id="mobileToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </nav>
 
-    <!--====== HEADER PART ENDS ======-->
-
-    <!--====== SERVICES PART START ======-->
-
-    <section id="service" class="services-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="section-title pb-10">
-                        <h4 class="title">Crafted For Insights</h4>
-                        <p class="text">Optimize your business outcomes with precision data analytics that drive performance. We guarantee transformative results and your complete satisfaction</p>
-                    </div> <!-- section title -->
-                </div>
-            </div> <!-- row -->
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="services-content mt-40 d-sm-flex">
-                                <div class="services-icon">
-                                    <i class="lni-bolt"></i>
-                                </div>
-                                <div class="services-content media-body">
-                                    <h4 class="services-title">Data Analytics</h4>
-                                    <p class="text">Empower innovation with insightful data analytics</p>
-                                </div>
-                            </div> <!-- services content -->
-                        </div>
-                        <div class="col-md-6">
-                            <div class="services-content mt-40 d-sm-flex">
-                                <div class="services-icon">
-                                    <i class="lni-bar-chart"></i>
-                                </div>
-                                <div class="services-content media-body">
-                                    <h4 class="services-title">Media Monitoring</h4>
-                                    <p class="text">Stay informed with real-time <br/>media tracking and essential <br/>insights.</p>
-                                </div>
-                            </div> <!-- services content -->
-                        </div>
-                        <div class="col-md-6">
-                            <div class="services-content mt-40 d-sm-flex">
-                                <div class="services-icon">
-                                    <i class="lni-brush"></i>
-                                </div>
-                                <div class="services-content media-body">
-                                    <h4 class="services-title">Data Engineering</h4>
-                                    <p class="text">Build robust data infrastructures that are scalable, efficient, and tailored to your business needs.</p>
-                                </div>
-                            </div> <!-- services content -->
-                        </div>
-                        <div class="col-md-6">
-                            <div class="services-content mt-40 d-sm-flex">
-                                <div class="services-icon">
-                                    <i class="lni-bulb"></i>
-                                </div>
-                                <div class="services-content media-body">
-                                    <h4 class="services-title">AI Solutions</h4>
-                                    <p class="text">Boost efficiency and gain an edge with advanced AI automation.</p>
-                                </div>
-                            </div> <!-- services content -->
-                        </div>
-                    </div> <!-- row -->
-                </div> <!-- row -->
-            </div> <!-- row -->
-        </div> <!-- conteiner -->
-        <div class="services-image d-lg-flex align-items-center">
-            <div class="image">
-                <img src="/public/services.png" alt="Services">
-            </div>
-        </div> <!-- services image -->
-    </section>
-
-    <!--====== SERVICES PART ENDS ======-->
-
-    <!--====== PRICING PART START ======-->
-
-    <section id="pricing" class="pricing-area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section-title text-center pb-10">
-                        <h4 class="title">Our Pricing</h4>
-                        <p class="text">Invest smartly in results-driven solutions. Exceptional value and satisfaction guaranteed!</p>
-                    </div> <!-- section title -->
-                </div>
-            </div> <!-- row -->
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-7 col-sm-9">
-                    <div class="single-pricing mt-40">
-                        <div class="pricing-header text-center">
-                            <h5 class="sub-title">Basic</h5>
-                            <span class="price">$ 145</span>
-                            <p class="year">per month</p>
-                        </div>
-                        <div class="pricing-list">
-                            <ul>
-                                <li><i class="lni-check-mark-circle"></i> 15 Scrapers</li>
-                                <li><i class="lni-check-mark-circle"></i> Dedicated AI Engine</li>
-                                <li><i class="lni-check-mark-circle"></i> Automatic Generated Report</li>
-                                <li><i class="lni-check-mark-circle"></i> Interactive Dashboard Access</li>
-                                <li><i class="lni-check-mark-circle"></i> 30 days articles retention</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-btn text-center">
-                            <a class="main-btn" href="#">GET STARTED</a>
-                        </div>
-                        <div class="buttom-shape">
-                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 112.35"><defs><style>.color-1{fill:#2bdbdc;isolation:isolate;}.cls-1{opacity:0.1;}.cls-2{opacity:0.2;}.cls-3{opacity:0.4;}.cls-4{opacity:0.6;}</style></defs><title>bottom-part1</title><g id="bottom-part"><g id="Group_747" data-name="Group 747"><path id="Path_294" data-name="Path 294" class="cls-1 color-1" d="M0,24.21c120-55.74,214.32,2.57,267,0S349.18,7.4,349.18,7.4V82.35H0Z" transform="translate(0 0)"/><path id="Path_297" data-name="Path 297" class="cls-2 color-1" d="M350,34.21c-120-55.74-214.32,2.57-267,0S.82,17.4.82,17.4V92.35H350Z" transform="translate(0 0)"/><path id="Path_296" data-name="Path 296" class="cls-3 color-1" d="M0,44.21c120-55.74,214.32,2.57,267,0S349.18,27.4,349.18,27.4v74.95H0Z" transform="translate(0 0)"/><path id="Path_295" data-name="Path 295" class="cls-4 color-1" d="M349.17,54.21c-120-55.74-214.32,2.57-267,0S0,37.4,0,37.4v74.95H349.17Z" transform="translate(0 0)"/></g></g></svg>
-                        </div>
-                    </div> <!-- single pricing -->
-                </div>
-                
-                <div class="col-lg-4 col-md-7 col-sm-9">
-                    <div class="single-pricing pro mt-40">
-                        <div class="pricing-baloon">
-                            <img src="/public/baloon.svg" alt="baloon">
-                        </div>
-                        <div class="pricing-header">
-                            <h5 class="sub-title">Standard</h5>
-                            <span class="price">$ 280</span>
-                            <p class="year">per month</p>
-                        </div>
-                        <div class="pricing-list">
-                            <ul>
-                                <li><i class="lni-check-mark-circle"></i> 30 Scrapers</li>
-                                <li><i class="lni-check-mark-circle"></i> Dedicated AI Engine</li>
-                                <li><i class="lni-check-mark-circle"></i> Automatic Generated Report</li>
-                                <li><i class="lni-check-mark-circle"></i> Interactive Dashboard Access</li>
-                                <li><i class="lni-check-mark-circle"></i> 30 days articles retention</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-btn text-center">
-                            <a class="main-btn" href="#">GET STARTED</a>
-                        </div>
-                        <div class="buttom-shape">
-                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 112.35"><defs><style>.color-2{fill:#0067f4;isolation:isolate;}.cls-1{opacity:0.1;}.cls-2{opacity:0.2;}.cls-3{opacity:0.4;}.cls-4{opacity:0.6;}</style></defs><title>bottom-part1</title><g id="bottom-part"><g id="Group_747" data-name="Group 747"><path id="Path_294" data-name="Path 294" class="cls-1 color-2" d="M0,24.21c120-55.74,214.32,2.57,267,0S349.18,7.4,349.18,7.4V82.35H0Z" transform="translate(0 0)"/><path id="Path_297" data-name="Path 297" class="cls-2 color-2" d="M350,34.21c-120-55.74-214.32,2.57-267,0S.82,17.4.82,17.4V92.35H350Z" transform="translate(0 0)"/><path id="Path_296" data-name="Path 296" class="cls-3 color-2" d="M0,44.21c120-55.74,214.32,2.57,267,0S349.18,27.4,349.18,27.4v74.95H0Z" transform="translate(0 0)"/><path id="Path_295" data-name="Path 295" class="cls-4 color-2" d="M349.17,54.21c-120-55.74-214.32,2.57-267,0S0,37.4,0,37.4v74.95H349.17Z" transform="translate(0 0)"/></g></g></svg>
-                        </div>
-                    </div> <!-- single pricing -->
-                </div>
-                
-                <div class="col-lg-4 col-md-7 col-sm-9">
-                    <div class="single-pricing enterprise mt-40">
-                        <div class="pricing-flower">
-                            <img src="/public/flower.svg" alt="flower">
-                        </div>
-                        <div class="pricing-header text-right">
-                            <h5 class="sub-title">Enterprise</h5>
-                            <span class="price">$ -</span>
-                            <p class="year">per month</p>
-                        </div>
-                        <div class="pricing-list">
-                            <ul>
-                                <li><i class="lni-check-mark-circle"></i> Fully customised request</li>                                
-                            </ul>
-                        </div>
-                        <div class="pricing-btn text-center">
-                            <a class="main-btn" href="#">GET STARTED</a>
-                        </div>
-                        <div class="buttom-shape">
-                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 112.35"><defs><style>.color-3{fill:#4da422;isolation:isolate;}.cls-1{opacity:0.1;}.cls-2{opacity:0.2;}.cls-3{opacity:0.4;}.cls-4{opacity:0.6;}</style></defs><title>bottom-part1</title><g id="bottom-part"><g id="Group_747" data-name="Group 747"><path id="Path_294" data-name="Path 294" class="cls-1 color-3" d="M0,24.21c120-55.74,214.32,2.57,267,0S349.18,7.4,349.18,7.4V82.35H0Z" transform="translate(0 0)"/><path id="Path_297" data-name="Path 297" class="cls-2 color-3" d="M350,34.21c-120-55.74-214.32,2.57-267,0S.82,17.4.82,17.4V92.35H350Z" transform="translate(0 0)"/><path id="Path_296" data-name="Path 296" class="cls-3 color-3" d="M0,44.21c120-55.74,214.32,2.57,267,0S349.18,27.4,349.18,27.4v74.95H0Z" transform="translate(0 0)"/><path id="Path_295" data-name="Path 295" class="cls-4 color-3" d="M349.17,54.21c-120-55.74-214.32,2.57-267,0S0,37.4,0,37.4v74.95H349.17Z" transform="translate(0 0)"/></g></g></svg>
-                        </div>
-                    </div> <!-- single pricing -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- conteiner -->
-    </section>
-
-    <!--====== PRICING PART ENDS ======-->
-    
-     <!--====== CALL TO ACTION PART START ======-->
-
-    <section id="call-to-action" class="call-to-action">
-        <div class="call-action-image">
-            <img src="/public/call-to-action.png" alt="call-to-action">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1 class="lang-en lang-hidden">
+            Turn <span class="highlight">Topics</span> into Insight—Across News & Social Media
+          </h1>
+          <h1 class="lang-id">
+            Ubah <span class="highlight">Topik</span> Jadi Insight—di Berita & Media Sosial
+          </h1>
+          <p class="lang-en lang-hidden">
+            Type a topic and instantly analyze coverage and conversations around it. Track narratives, sentiment, spikes, and key voices—inside one clean workspace.
+          </p>
+          <p class="lang-id">
+            Tulis sebuah topik lalu analisis seketika liputan dan percakapan di sekitarnya. Pantau narasi, sentimen, lonjakan, dan tokoh kunci—dalam satu workspace yang rapi.
+          </p>
+          <div class="hero-actions">
+            <a href="https://alpha.teleskop.id" class="btn btn-primary lang-en lang-hidden">
+              Get Started Free <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="https://alpha.teleskop.id" class="btn btn-primary lang-id">
+              Mulai Gratis <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
-        
-        <div class="container-fluid">
-            <div class="row justify-content-end">
-                <div class="col-lg-6">
-                    <div class="call-action-content text-center">
-                        <h2 class="call-title">Curious to Learn More? Stay Tuned</h2>
-                        <p class="text">You let us know whenever you want us to update anything or think something can be optimised.</p>
-                        <div class="call-newsletter">
-                            <i class="lni-envelope"></i>
-                            <input type="text" placeholder="hello@teleskop.id">
-                            <button type="submit">SUBSCRIBE</button>
-                        </div>
-                    </div> <!-- slider-content -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
+        <div class="hero-visual">
+          <!-- (SVG asli tetap) -->
+          <svg class="hero-image" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+            <rect x="50" y="50" width="400" height="300" rx="20" fill="#F9FAFB"/>
+            <rect x="50" y="50" width="400" height="60" rx="20" fill="#00A76F"/>
+            <path d="M 80 250 Q 150 180, 220 200 T 380 150" stroke="#5BE49B" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M 80 280 Q 150 240, 220 260 T 380 220" stroke="#00B8D9" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <circle cx="80" cy="250" r="6" fill="#5BE49B"/>
+            <circle cx="220" cy="200" r="6" fill="#5BE49B"/>
+            <circle cx="380" cy="150" r="6" fill="#5BE49B"/>
+            <circle cx="80" cy="280" r="6" fill="#00B8D9"/>
+            <circle cx="220" cy="260" r="6" fill="#00B8D9"/>
+            <circle cx="380" cy="220" r="6" fill="#00B8D9"/>
+            <circle cx="250" cy="80" r="15" fill="white" opacity="0.9"/>
+            <text x="250" y="87" text-anchor="middle" fill="#00A76F" font-size="18" font-weight="bold">📊</text>
+          </svg>
+        </div>
+      </div>
     </section>
 
-    <!--====== CALL TO ACTION PART ENDS ======-->
-    
-    <!--====== CONTACT PART START ======-->
-
-    <section id="contact" class="contact-area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section-title text-center pb-10">
-                        <h4 class="title">Get In touch</h4>
-                        <p class="text">Unlock the potential of your data with our tailored solutions. We're here to ensure your success!</p>
-                    </div> <!-- section title -->
-                </div>
-            </div> <!-- row -->
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="contact-form">
-                        <form id="contact-form" action="assets/contact.php" method="post" data-toggle="validator">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="single-form form-group">
-                                        <input type="text" name="name" placeholder="Your Name" data-error="Name is required." required="required">
-                                        <div class="help-block with-errors"></div>
-                                    </div> <!-- single form -->
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single-form form-group">
-                                        <input type="email" name="email" placeholder="Your Email" data-error="Valid email is required." required="required">
-                                        <div class="help-block with-errors"></div>
-                                    </div> <!-- single form -->
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single-form form-group">
-                                        <input type="text" name="subject" placeholder="Subject" data-error="Subject is required." required="required">
-                                        <div class="help-block with-errors"></div>
-                                    </div> <!-- single form -->
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single-form form-group">
-                                        <input type="text" name="phone" placeholder="Phone" data-error="Phone is required." required="required">
-                                        <div class="help-block with-errors"></div>
-                                    </div> <!-- single form -->
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="single-form form-group">
-                                        <textarea placeholder="Your Mesaage" name="message" data-error="Please, leave us a message." required="required"></textarea>
-                                        <div class="help-block with-errors"></div>
-                                    </div> <!-- single form -->
-                                </div>
-                                <p class="form-message"></p>
-                                <div class="col-md-12">
-                                    <div class="single-form form-group text-center">
-                                        <button type="submit" class="main-btn">send message</button>
-                                    </div> <!-- single form -->
-                                </div>
-                            </div> <!-- row -->
-                        </form>
-                    </div> <!-- row -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- conteiner -->
+    <!-- Stats -->
+    <section class="stats">
+      <div class="stats-container">
+        <div class="stat-item">
+          <h3>3</h3>
+          <p class="lang-en lang-hidden">Trusted Partners</p>
+          <p class="lang-id">Partner Terpercaya</p>
+        </div>
+        <div class="stat-item">
+          <h3>100K+</h3>
+          <p class="lang-en lang-hidden">Posts Analyzed</p>
+          <p class="lang-id">Postingan Dianalisis</p>
+        </div>
+        <div class="stat-item">
+          <h3>99.9%</h3>
+          <p class="lang-en lang-hidden">Uptime</p>
+          <p class="lang-id">Waktu Aktif</p>
+        </div>
+        <div class="stat-item">
+          <h3>24/7</h3>
+          <p class="lang-en lang-hidden">Support</p>
+          <p class="lang-id">Dukungan</p>
+        </div>
+      </div>
     </section>
 
-    <!--====== CONTACT PART ENDS ======-->
+    <!-- Trusted By -->
+    <section class="trusted-by">
+      <div class="trusted-by-container">
+        <h2 class="lang-en lang-hidden">Trusted for Topic Monitoring by Leading Teams</h2>
+        <h2 class="lang-id">Dipercaya untuk Monitoring Topik oleh Berbagai Tim Terkemuka</h2>
+        <div class="trusted-logos">
+          <div class="trusted-logo">
+            <img src="https://8upload.com/image/68ec89050a991/Screen_Shot_2025-10-13_at_12.06.33.png" alt="Catalyze">
+          </div>
+          <div class="trusted-logo">
+            <img src="https://8upload.com/image/68ec8894aabb6/logo-new-sgh-dds.jpg-mv0D3L1Vp4Hkb6eK.png?raw=1" alt="SGH">
+          </div>
+          <div class="trusted-logo">
+            <img src="https://campaign.kompas.id/wp-content/uploads/2023/07/logo-kompas-buat-di-stripo-1.png" alt="Kompas.id">
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!--====== FOOTER PART START ======-->
+    <!-- Features -->
+    <section class="features" id="features">
+      <div class="section-header">
+        <h2 class="lang-en lang-hidden">All-in-One Tools for News & Social Media Analysis</h2>
+        <h2 class="lang-id">Tools Lengkap untuk Analisis News & Sosial Media</h2>
+        <p class="lang-en lang-hidden">Powerful tools to monitor narratives, sentiment, influencers, and trends across platforms—by topic or keyword.</p>
+        <p class="lang-id">Alat yang canggih untuk memantau narasi, sentimen, influencer, dan tren di berbagai platform—berdasarkan topik atau kata kunci.</p>
+      </div>
 
-    <footer id="footer" class="footer-area">
-        <div class="footer-widget">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="footer-logo-support d-md-flex align-items-end justify-content-between">
-                            <div class="footer-logo d-flex align-items-end">
-                                <a class="mt-30" href="index.html"><img src="/public/logo.png" width="40" alt="Logo"></a>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+          <h3 class="lang-en lang-hidden">Real-Time Topic Trends</h3>
+          <h3 class="lang-id">Tren Topik Real-Time</h3>
+          <p class="lang-en lang-hidden">See how your topic rises and falls with interactive timelines, spike detection, and volume change alerts.</p>
+          <p class="lang-id">Lihat naik-turunnya topik dengan timeline interaktif, deteksi lonjakan, dan peringatan perubahan volume.</p>
+        </div>
 
-                                <ul class="social mt-30">
-                                    <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
-                                    <li><a href="#"><i class="lni-twitter-original"></i></a></li>
-                                    <li><a href="#"><i class="lni-instagram-original"></i></a></li>
-                                    <li><a href="#"><i class="lni-linkedin-original"></i></a></li>
-                                </ul>
-                            </div> <!-- footer logo -->
-                            
-                        </div> <!-- footer logo support -->
-                    </div>
-                </div> <!-- row -->
-                <div class="row">
-                    <div class="col-lg-2 col-md-4 col-sm-6">
-                        <div class="footer-link">
-                            <h6 class="footer-title">Company</h6>
-                            <ul>
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <li><a href="#">Career</a></li>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-brain"></i></div>
+          <h3 class="lang-en lang-hidden">AI Sentiment & Emotion</h3>
+          <h3 class="lang-id">Sentimen & Emosi AI</h3>
+          <p class="lang-en lang-hidden">Measure sentiment and emotions from articles and social media posts connected to your topic.</p>
+          <p class="lang-id">Ukur sentimen dan emosi dari artikel serta postingan sosial media yang terkait topik Anda.</p>
+        </div>
 
-                            </ul>
-                        </div> <!-- footer link -->
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="footer-link">
-                            <h6 class="footer-title">Product & Services</h6>
-                            <ul>
-                                <li><a href="#">Products</a></li>
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">Developer</a></li>
-                            </ul>
-                        </div> <!-- footer link -->
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-5">
-                        <div class="footer-link">
-                            <h6 class="footer-title">Help & Suuport</h6>
-                            <ul>
-                                <li><a href="#">Support Center</a></li>
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
-                            </ul>
-                        </div> <!-- footer link -->
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-7">
-                        <div class="footer-newsletter">
-                            <h6 class="footer-title">Subscribe Newsletter</h6>
-                            <div class="newsletter">
-                                <form action="#">
-                                    <input type="text" placeholder="Your Email">
-                                    <button type="submit"><i class="lni-angle-double-right"></i></button>
-                                </form>
-                            </div>
-                            <p class="text">Subscribe weekly newsletter to stay upto date. We don’t send spam.</p>
-                        </div> <!-- footer newsletter -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- footer widget -->
-        
-        <div class="footer-copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="copyright text-center">
-                            <p class="text"> <a rel="nofollow" href="https://uideck.com"></a> <a el="nofollow" href="https://rebrand.ly/ayroui"></a></p>
-                        </div>
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- footer copyright -->
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-project-diagram"></i></div>
+          <h3 class="lang-en lang-hidden">Conversation Network Mapping</h3>
+          <h3 class="lang-id">Pemetaan Jaringan Percakapan</h3>
+          <p class="lang-en lang-hidden">Visualize accounts, outlets, and topics shaping the narrative to reveal clusters, bridges, and influence flows.</p>
+          <p class="lang-id">Visualisasikan akun, media, dan topik yang membentuk narasi untuk melihat klaster, jembatan, dan arus pengaruh.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-newspaper"></i></div>
+          <h3 class="lang-en lang-hidden">News Monitoring & Narrative Tracking</h3>
+          <h3 class="lang-id">Monitoring Berita & Penelusuran Narasi</h3>
+          <p class="lang-en lang-hidden">Follow coverage from diverse outlets, compare angles, and spot narrative shifts around your topic.</p>
+          <p class="lang-id">Ikuti liputan dari beragam media, bandingkan sudut pandang, dan temukan pergeseran narasi di sekitar topik Anda.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-file-pdf"></i></div>
+          <h3 class="lang-en lang-hidden">Automated, Share-Ready Reports</h3>
+          <h3 class="lang-id">Laporan Otomatis Siap Dibagikan</h3>
+          <p class="lang-en lang-hidden">Export polished PDFs with charts, key quotes, sentiment breakdowns, and AI-generated summary insights by topic.</p>
+          <p class="lang-id">Ekspor PDF rapi berisi grafik, kutipan kunci, ringkasan sentimen, dan ringkasan insight dari AI per topik.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-tags"></i></div>
+          <h3 class="lang-en lang-hidden">Topic & Subtopic Discovery</h3>
+          <h3 class="lang-id">Topik & Subtopik</h3>
+          <p class="lang-en lang-hidden">Group conversations by themes, track volume and sentiment per theme, and surface emerging subtopics.</p>
+          <p class="lang-id">Kelompokkan percakapan per tema, lacak volume dan sentimen tiap tema, serta munculkan subtopik yang sedang muncul.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+      <div class="pricing-container">
+        <div class="section-header">
+          <h2 class="lang-en lang-hidden">Start Free. Upgrade Anytime.</h2>
+          <h2 class="lang-id">Mulai Gratis. Upgrade Kapan Saja.</h2>
+          <p class="lang-en lang-hidden">Only $1 USD (≈ Rp 17,000) per month for Premium monitoring and advanced insights.</p>
+          <p class="lang-id">Hanya $1 USD (≈ Rp 17.000) per bulan untuk monitoring Premium dan insight tingkat lanjut.</p>
+        </div>
+
+        <div class="pricing-cards">
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3 class="lang-en lang-hidden">Trial</h3>
+              <h3 class="lang-id">Trial</h3>
+              <div class="pricing-price">
+                $0
+                <span class="lang-en lang-hidden">/month</span>
+                <span class="lang-id">/bulan</span>
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check-circle"></i><span class="lang-en lang-hidden">Access to core features</span><span class="lang-id">Akses fitur inti</span></li>
+              <li><i class="fas fa-check-circle"></i><span class="lang-en lang-hidden">Up to 100 mentions per platform</span><span class="lang-id">Hingga 100 mention per platform</span></li>
+              <li><i class="fas fa-check-circle"></i><span class="lang-en lang-hidden">Basic analytics</span><span class="lang-id">Analisis dasar</span></li>
+              <li><i class="fas fa-check-circle"></i><span class="lang-en lang-hidden">Email support</span><span class="lang-id">Dukungan email</span></li>
+            </ul>
+            <a href="https://alpha.teleskop.id" class="btn btn-outline lang-en lang-hidden" style="width:100%;justify-content:center;">Start Free</a>
+            <a href="https://alpha.teleskop.id" class="btn btn-outline lang-id" style="width:100%;justify-content:center;">Mulai Gratis</a>
+          </div>
+
+          <div class="pricing-card featured">
+            <div class="pricing-badge lang-en lang-hidden">Most Popular</div>
+            <div class="pricing-badge lang-id">Terpopuler</div>
+            <div class="pricing-header">
+              <h3>Premium</h3>
+              <div class="pricing-price">
+                $1
+                <span class="lang-en lang-hidden">/month</span>
+                <span class="lang-id">/bulan</span>
+              </div>
+              <div style="font-size:.875rem;opacity:.9;margin-top:.5rem;">≈ Rp 17.000</div>
+            </div>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check-circle"></i><span class="lang-en lang-hidden">All Trial features</span><span class="lang-id">Semua fitur Trial</span></li>
+              <li><i class="fas fa-check-circle"></i><span class="lang-en lang-hidden">Up to 500 mentions per platform</span><span class="lang-id">Hingga 500 mention per platform</span></li>
+              <li><i class="fas fa-check-circle"></i><span class="lang-en lang-hidden">Advanced AI analytics</span><span class="lang-id">Analisis AI tingkat lanjut</span></li>
+              <li><i class="fas fa-check-circle"></i><span class="lang-en lang-hidden">Professional PDF reports</span><span class="lang-id">Laporan PDF profesional</span></li>
+              <li><i class="fas fa-check-circle"></i><span class="lang-en lang-hidden">Priority support</span><span class="lang-id">Dukungan prioritas</span></li>
+            </ul>
+            <a href="https://alpha.teleskop.id" class="btn btn-white lang-en lang-hidden" style="width:100%;justify-content:center;">Upgrade Now</a>
+            <a href="https://alpha.teleskop.id" class="btn btn-white lang-id" style="width:100%;justify-content:center;">Upgrade Sekarang</a>
+          </div>
+
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>Enterprise</h3>
+              <div class="pricing-price">
+                <span class="lang-en lang-hidden">Custom</span>
+                <span class="lang-id">Kustom</span>
+                <span class="lang-en lang-hidden">/month</span>
+                <span class="lang-id">/bulan</span>
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check-circle"></i><span class="lang-en lang-hidden">Everything in Premium</span><span class="lang-id">Semua fitur Premium</span></li>
+              <li><i class="fas fa-check-circle"></i><span class="lang-en lang-hidden">Dedicated support</span><span class="lang-id">Dukungan khusus</span></li>
+              <li><i class="fas fa-check-circle"></i><span class="lang-en lang-hidden">Custom integrations</span><span class="lang-id">Integrasi kustom</span></li>
+              <li><i class="fas fa-check-circle"></i><span class="lang-en lang-hidden">Training & onboarding</span><span class="lang-id">Pelatihan & onboarding</span></li>
+            </ul>
+            <a href="#" class="btn btn-outline lang-en lang-hidden" style="width:100%;justify-content:center;">Contact Sales</a>
+            <a href="#" class="btn btn-outline lang-id" style="width:100%;justify-content:center;">Hubungi Sales</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="cta-container">
+        <h2 class="lang-en lang-hidden">Ready to Monitor Any Topic—Across News & Social Media?</h2>
+        <h2 class="lang-id">Siap Memantau Topik Apa Pun di Berita & Media Sosial?</h2>
+
+        <p class="lang-en lang-hidden">
+          Teleskop Alpha helps teams investigate specific topics with fast, accurate analysis of coverage and conversations—so decisions move with the narrative.
+        </p>
+        <p class="lang-id">
+          Teleskop Alpha membantu tim menginvestigasi topik spesifik dengan analisis cepat dan akurat terhadap liputan dan percakapan—agar keputusan tetap sejalan dengan perkembangan narasi.
+        </p>
+
+        <a href="https://alpha.teleskop.id" class="btn btn-white lang-en lang-hidden">
+          Start Free Now <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="https://alpha.teleskop.id" class="btn btn-white lang-id">
+          Mulai Gratis Sekarang <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4># teleskop</h4>
+            <p class="lang-en lang-hidden">An AI-powered topic intelligence platform for analyzing news and social conversations—understand narratives, sentiment, and key voices.</p>
+            <p class="lang-id">Platform intelijen topik bertenaga AI untuk menganalisis berita dan percakapan sosial—memahami narasi, sentimen, dan tokoh kunci.</p>
+          </div>
+          <div class="footer-section">
+            <h4 class="lang-en lang-hidden">Product</h4>
+            <h4 class="lang-id">Produk</h4>
+            <ul>
+              <li><a href="#features" class="lang-en lang-hidden">Features</a><a href="#features" class="lang-id">Fitur</a></li>
+              <li><a href="#pricing" class="lang-en lang-hidden">Pricing</a><a href="#pricing" class="lang-id">Harga</a></li>
+              <li><a href="#" class="lang-en lang-hidden">Docs & Methods</a><a href="#" class="lang-id">Dokumentasi & Metode</a></li>
+              <li><a href="#">API</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4 class="lang-en lang-hidden">Company</h4>
+            <h4 class="lang-id">Perusahaan</h4>
+            <ul>
+              <li><a href="#about" class="lang-en lang-hidden">About Us</a><a href="#about" class="lang-id">Tentang Kami</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#" class="lang-en lang-hidden">Careers</a><a href="#" class="lang-id">Karir</a></li>
+              <li><a href="#contact" class="lang-en lang-hidden">Contact</a><a href="#contact" class="lang-id">Kontak</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4 class="lang-en lang-hidden">Legal</h4>
+            <h4 class="lang-id">Legal</h4>
+            <ul>
+              <li><a href="#" class="lang-en lang-hidden">Privacy Policy</a><a href="#" class="lang-id">Kebijakan Privasi</a></li>
+              <li><a href="#" class="lang-en lang-hidden">Terms of Service</a><a href="#" class="lang-id">Ketentuan Layanan</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="lang-en lang-hidden">&copy; 2025 Teleskop Alpha. All rights reserved.</p>
+          <p class="lang-id">&copy; 2025 Teleskop Alpha. Semua hak dilindungi undang-undang.</p>
+        </div>
+      </div>
     </footer>
 
-    <!--====== FOOTER PART ENDS ======-->
+    <!-- JavaScript (asli, tak diubah) -->
+    <script>
+    let currentLang='id';
 
-    <!--====== BACK TO TOP PART START ======-->
+    function switchLanguage(lang) {
+      currentLang = lang;
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.lang === lang) {
+          btn.classList.add('active')
+        }
+      });
 
-    <a class="back-to-top" href="#"><i class="lni-chevron-up"></i></a>
+      if (lang === 'en') {
+        document.querySelectorAll('.lang-en').forEach(el => el.classList.remove('lang-hidden'));
+        document.querySelectorAll('.lang-id').forEach(el => el.classList.add('lang-hidden'));
+        document.documentElement.lang = 'en';
+      } else {
+        document.querySelectorAll('.lang-id').forEach(el => el.classList.remove('lang-hidden'));
+        document.querySelectorAll('.lang-en').forEach(el => el.classList.add('lang-hidden'));
+        document.documentElement.lang = 'id';
+      }
 
-    <!--====== BACK TO TOP PART ENDS ======-->
+      localStorage.setItem('preferredLanguage',lang);
+    }
 
+    window.addEventListener('DOMContentLoaded',() => {
+      const savedLang = localStorage.getItem('preferredLanguage')||'id';
+      switchLanguage(savedLang);
+    });
 
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
 
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      const icon = mobileToggle.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
 
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileToggle.querySelector('i').classList.add('fa-bars');
+        mobileToggle.querySelector('i').classList.remove('fa-times');
+      });
+    });
 
+    window.addEventListener('scroll', () => {
+      const navbar=document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled')
+      } else {
+        navbar.classList.remove('scrolled')
+      }
+    });
 
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href=this.getAttribute('href');
 
+        if(href !== '#' && href !== '') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({behavior:'smooth',block:'start'})
+          }
+        }
+      });
+    });
 
+    const observerOptions = {
+      threshold:0.1,
+      rootMargin:'0px 0px -50px 0px'
+    };
 
-    <!--====== jquery js ======-->
-    <script src="/public/vendor/modernizr-3.6.0.min.js"></script>
-    <script src="/public/vendor/jquery-1.12.4.min.js"></script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
 
-    <!--====== Bootstrap js ======-->
-    <script src="/public/bootstrap.min.js"></script>
-    <script src="/public/popper.min.js"></script>
+    document.querySelectorAll('.feature-card, .pricing-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'opacity .6s ease, transform .6s ease';
+      observer.observe(card);
+    });
+    </script>
+  </body>
 
-    <!--====== Scrolling Nav js ======-->
-    <script src="/public/jquery.easing.min.js"></script>
-    <script src="/public/scrolling-nav.js"></script>
-
-    <!--====== Magnific Popup js ======-->
-    <script src="/public/jquery.magnific-popup.min.js"></script>
-
-    <!--====== Main js ======-->
-    <script src="/public/main.js"></script>
-</body>
 </html>
